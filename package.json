@@ -1,0 +1,11 @@
+{
+  "name": "inject-js",
+  "version": "1.0.0",
+  "description": "Dependency injection for Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cesar E. Contreras",
+  "license": "ISC"
+}

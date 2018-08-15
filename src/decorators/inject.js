@@ -1,10 +1,17 @@
 import { getContainer } from '../container';
 
-function lookup(container, ...deps) {
+function lookup(container, deps) {
   return deps.reduce((a, b) => {
     a.push(container[b]);
     return a;
   }, []);
+}
+
+function bindAll(context, target, deps) {
+  while (deps.length > 0) {
+    target = target.bind(context, deps.shift());
+  }
+  return target;
 }
 
 /**
@@ -17,7 +24,7 @@ export function inject(...deps) {
     const actual = descriptor.value;
     const container = getContainer();
     const toInject = lookup(container, deps);
-    descriptor.value = actual.bind(null, toInject);
+    descriptor.value = bindAll(target, actual, toInject);
     return descriptor;
   };
 }

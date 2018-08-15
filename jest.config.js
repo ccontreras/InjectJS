@@ -1,4 +1,7 @@
 module.exports = {
   bail: true,
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  transform: {
+    ['^.+\\.jsx?$']: 'babel-jest'
+  }
 };

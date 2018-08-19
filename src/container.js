@@ -13,7 +13,6 @@ const container = {};
 export function getContainer() {
   return { ...container };
 }
-
 /**
  * Adds a service into the container.
  * @param {string} key the service identifier.
@@ -32,4 +31,12 @@ export function remove(key) {
     throw new Error(`A service with key "${key}" is not stored.`);
   }
   delete container[key];
+}
+
+/**
+ * Deletes container from memory
+ */
+
+export function removeAll() {
+  Object.keys(container).forEach(k => delete container[k]);
 }

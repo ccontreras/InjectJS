@@ -21,6 +21,12 @@ describe('container', () => {
     expect(Object.keys(container)).toContain(KEY);
     expect(container[KEY]).toBe(VAL);
   });
+  it('should get immutable container', () => {
+    add(KEY,VAL);
+    const container = getContainer();
+    const newKey = getKey(1);
+    expect(Object.isFrozen(container)).toBe(true);
+  });
   it('should remove a dependency from the container', () => {
     expect(() => remove(KEY)).not.toThrow();
     expect(getContainer()).toEqual({});

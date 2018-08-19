@@ -11,7 +11,7 @@ const container = {};
  * Exposes an inmutable container object.
  */
 export function getContainer() {
-  return { ...container };
+  return Object.freeze({ ...container });
 }
 /**
  * Adds a service into the container.

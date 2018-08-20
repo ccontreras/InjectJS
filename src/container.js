@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-const container = {};
+let container = {};
 
 /**
  * Exposes an inmutable container object.
@@ -38,5 +38,5 @@ export function remove(key) {
  */
 
 export function removeAll() {
-  Object.keys(container).forEach(k => delete container[k]);
+  container = {};
 }

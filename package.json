@@ -2,7 +2,7 @@
   "name": "inject-js",
   "version": "1.0.0",
   "description": "Dependency injection for Javascript",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src/**",
     "test": "jest",

@@ -8,10 +8,11 @@ function lookup(container, deps) {
 }
 
 function bindAll(context, target, deps) {
+  let _target = target;
   while (deps.length > 0) {
-    target = target.bind(context, deps.shift());
+    _target = target.bind(context, deps.shift());
   }
-  return target;
+  return _target;
 }
 
 /**
@@ -24,7 +25,8 @@ export function inject(...deps) {
     const actual = descriptor.value;
     const container = getContainer();
     const toInject = lookup(container, deps);
-    descriptor.value = bindAll(target, actual, toInject);
-    return descriptor;
+    const _descriptor = Object.assign(descriptor);
+    _descriptor.value = bindAll(target, actual, toInject);
+    return _descriptor;
   };
 }

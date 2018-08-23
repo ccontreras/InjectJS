@@ -28,7 +28,8 @@ export function add(key, value) {
  * @param {string} key the service identifier.
  */
 export function remove(key) {
-  if (!(key in container))
+  if (!(key in container)) {
     throw new Error(`A service with key "${key}" is not stored.`);
+  }
   delete container[key];
 }

@@ -3,6 +3,6 @@ module.exports = {
   testEnvironment: 'node',
   testPathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/node_modules/'],
   transform: {
-    ['^.+\\.jsx?$']: 'babel-jest'
-  }
+    '^.+\\.jsx?$': 'babel-jest',
+  },
 };

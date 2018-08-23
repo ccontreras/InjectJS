@@ -1,3 +1,12 @@
 {
-    "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-underscore-dangle": 0,
+    "import/prefer-default-export": 0,
+    "class-methods-use-this": 0
+  }
 }

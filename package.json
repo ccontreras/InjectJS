@@ -8,7 +8,10 @@
     "test": "jest",
     "build": "babel src --out-dir lib"
   },
-  "author": "Cesar E. Contreras",
+  "author": "Cesar E. Contreras <ccdl15c@gmail.com>",
+  "contributors": [
+    "Eduardo Diaz"
+  ],
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -10,7 +10,7 @@ function lookup(container, deps) {
 function bindAll(context, target, deps) {
   let _target = target;
   while (deps.length > 0) {
-    _target = target.bind(context, deps.shift());
+    _target = _target.bind(context, deps.shift());
   }
   return _target;
 }

@@ -1,16 +1,10 @@
-import { add, remove, removeAll, getContainer } from './container';
+import {
+  add, remove, removeAll, getContainer,
+} from '../src/container';
 
 describe('container', () => {
   const KEY = 'Foo';
   const VAL = 1;
-  const getKey = len => {
-    let txt = '';
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for(let i = 0; i < len; i++) {
-      txt += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return txt;
-  }
 
   it('should add a dependency into the container with key', () => {
     expect(() => add(KEY, VAL)).not.toThrowError();
@@ -22,9 +16,8 @@ describe('container', () => {
     expect(container[KEY]).toBe(VAL);
   });
   it('should get immutable container', () => {
-    add(KEY,VAL);
+    add(KEY, VAL);
     const container = getContainer();
-    const newKey = getKey(1);
     expect(Object.isFrozen(container)).toBe(true);
   });
   it('should remove a dependency from the container', () => {

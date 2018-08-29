@@ -1,5 +1,5 @@
-import { add } from '../container';
-import { inject } from './inject';
+import { add } from '../src/container';
+import { inject } from '../src/decorators/inject';
 
 // TODO: Add more / Refactor this tests
 

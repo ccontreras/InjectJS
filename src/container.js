@@ -5,15 +5,14 @@
  * @version 1.0.0
  */
 
-const container = {};
+let container = {};
 
 /**
  * Exposes an inmutable container object.
  */
 export function getContainer() {
-  return { ...container };
+  return Object.freeze({ ...container });
 }
-
 /**
  * Adds a service into the container.
  * @param {string} key the service identifier.
@@ -32,4 +31,12 @@ export function remove(key) {
     throw new Error(`A service with key "${key}" is not stored.`);
   }
   delete container[key];
+}
+
+/**
+ * Deletes container from memory
+ */
+
+export function removeAll() {
+  container = {};
 }

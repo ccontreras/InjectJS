@@ -3,29 +3,29 @@ import {
 } from '../src/container';
 
 describe('container', () => {
-  const KEY = 'Foo';
-  const VAL = 1;
+  const key = 'Foo';
+  const val = 1;
 
   it('should add a dependency into the container with key', () => {
-    expect(() => add(KEY, VAL)).not.toThrowError();
+    expect(() => add(key, val)).not.toThrowError();
 
     const container = getContainer();
 
     expect(container).toBeDefined();
-    expect(Object.keys(container)).toContain(KEY);
-    expect(container[KEY]).toBe(VAL);
+    expect(Object.keys(container)).toContain(key);
+    expect(container[key]).toBe(val);
   });
   it('should get immutable container', () => {
-    add(KEY, VAL);
+    add(key, val);
     const container = getContainer();
     expect(Object.isFrozen(container)).toBe(true);
   });
   it('should remove a dependency from the container', () => {
-    expect(() => remove(KEY)).not.toThrow();
+    expect(() => remove(key)).not.toThrow();
     expect(getContainer()).toEqual({});
   });
   it('should remove all dependencies from container', () => {
-    add(KEY, VAL);
+    add(key, val);
 
     let container = getContainer();
     expect(container).toBeDefined();

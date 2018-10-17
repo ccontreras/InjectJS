@@ -1,19 +1,5 @@
-import { getContainer } from '../container';
-
-function lookup(container, deps) {
-  return deps.reduce((a, b) => {
-    a.push(container[b]);
-    return a;
-  }, []);
-}
-
-function bindAll(context, target, deps) {
-  let _target = target;
-  while (deps.length > 0) {
-    _target = _target.bind(context, deps.shift());
-  }
-  return _target;
-}
+import { getContainer } from './container';
+import { bindAll, lookup } from './utils';
 
 /**
  * Injects dependencies via arguments. The values in `deps` will be injected in order

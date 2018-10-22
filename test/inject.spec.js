@@ -1,15 +1,20 @@
-import { add } from '../src/container';
+import { add, removeAll } from '../src/container';
 import { inject } from '../src/inject';
 
-// TODO: Add more / Refactor this tests
+const addAll = (o) => {
+  Object.keys(o).forEach(n => add(n, o[n]));
+};
 
 describe('inject', () => {
-  it('should inject A dependency correctly', () => {
-    // add dependencies into the container.
-    add('A', 1);
-    add('B', 2);
+  beforeEach(() => {
+    addAll({ A: 1, B: 2 });
+  });
 
-    // Create the mock class where to inject the deps.
+  afterEach(() => {
+    removeAll();
+  });
+
+  it('should inject A dependency correctly', () => {
     class FooMock {
       @inject('A', 'B')
       foo(a, b) {
@@ -18,7 +23,17 @@ describe('inject', () => {
     }
 
     const fooMock = new FooMock();
-
     expect(fooMock.foo()).toBe(3);
+  });
+
+  it('should throw if at least one dependency is not satisfied', () => {
+    expect(
+      () => class FooMock {
+          @inject('A', 'B', 'C')
+        foo(a, b, c) {
+          return a + b + c;
+        }
+      },
+    ).toThrow();
   });
 });

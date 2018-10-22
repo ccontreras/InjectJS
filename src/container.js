@@ -36,7 +36,6 @@ export function remove(key) {
 /**
  * Deletes container from memory
  */
-
 export function removeAll() {
   container = {};
 }
